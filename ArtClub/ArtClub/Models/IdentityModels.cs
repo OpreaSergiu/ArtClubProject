@@ -29,5 +29,9 @@ namespace ArtClub.Models
         {
             return new ApplicationDbContext();
         }
+        public DbSet<LocationsModels> LocationsModels { get; set; }
+        public DbSet<ReservationsModels> ReservationsModels { get; set; }
+        public DbSet<EventsModels> EventsModels { get; set; }
+        public DbSet<EventGuestsModels> EventGuestsModels { get; set; }
     }
 }

@@ -1,0 +1,8 @@
+﻿@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated)
+{
+    <li>@Html.ActionLink("Events", "Index", "Events")</li>
+    <li>@Html.ActionLink("Locations", "Index", "Locations")</li>
+}
+
