@@ -228,6 +228,10 @@
     <Compile Include="Migrations\201805081641588_AddUrl3.Designer.cs">
       <DependentUpon>201805081641588_AddUrl3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805090052255_AddUrl4.cs" />
+    <Compile Include="Migrations\201805090052255_AddUrl4.Designer.cs">
+      <DependentUpon>201805090052255_AddUrl4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EventGuestsModels.cs" />
@@ -349,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805081641588_AddUrl3.resx">
       <DependentUpon>201805081641588_AddUrl3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805090052255_AddUrl4.resx">
+      <DependentUpon>201805090052255_AddUrl4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

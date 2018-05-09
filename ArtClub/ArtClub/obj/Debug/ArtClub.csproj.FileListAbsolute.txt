@@ -158,3 +158,4 @@ C:\Users\Sergiu\source\repos\ArtClubProject\ArtClub\ArtClub\obj\Debug\ArtClub.Mi
 C:\Users\Sergiu\source\repos\ArtClubProject\ArtClub\ArtClub\obj\Debug\ArtClub.Migrations.AddUrl1.resources
 C:\Users\Sergiu\source\repos\ArtClubProject\ArtClub\ArtClub\obj\Debug\ArtClub.Migrations.AddUrl2.resources
 C:\Users\Sergiu\source\repos\ArtClubProject\ArtClub\ArtClub\obj\Debug\ArtClub.Migrations.AddUrl3.resources
+C:\Users\Sergiu\source\repos\ArtClubProject\ArtClub\ArtClub\obj\Debug\ArtClub.Migrations.AddUrl4.resources

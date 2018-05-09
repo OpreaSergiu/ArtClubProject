@@ -10,7 +10,9 @@ namespace ArtClub.Models
     {
         [Key]
         public int Id { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime StartDate { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime EndDate { get; set; }
         public string Reason { get; set; }
         public int LocationReserved { get; set; }
