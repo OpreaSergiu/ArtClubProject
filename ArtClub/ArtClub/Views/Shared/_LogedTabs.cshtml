@@ -1,4 +1,8 @@
 ﻿@using Microsoft.AspNet.Identity
+@if (Context.User.IsInRole("Admin"))
+{
+    <li>@Html.ActionLink("Add Member", "Register", "AddMembers")</li>
+}
 
 @if (Request.IsAuthenticated)
 {
