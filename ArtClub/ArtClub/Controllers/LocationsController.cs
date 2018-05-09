@@ -10,7 +10,7 @@ using ArtClub.Models;
 
 namespace ArtClub.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class LocationsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
