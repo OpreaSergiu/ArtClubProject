@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ArtClub.Models;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,8 @@ namespace ArtClub.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
             return View();
@@ -15,21 +19,55 @@ namespace ArtClub.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
         public ActionResult BookLocation()
         {
+            return View(db.LocationsModels.ToList());
+        }
+
+        public ActionResult Reserve()
+        {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Reserve(DateTime Date, string Reason, string User, string Phone, int id = 0)
+        {
+            var check = db.ReservationsModels.Where(s => s.Date == Date).Take(1).SingleOrDefault();
+
+            if (check != null)
+            {
+                ViewBag.Message = "This Date is already booked";
+                return View();
+            }
+            else
+            {
+                if ((id != 0) && (User.Length > 3) && (Phone.Length > 9) && (Date != null))
+                {
+                    var Reservation = new ReservationsModels();
+
+                    Reservation.Date = Date;
+                    Reservation.Reason = Reason;
+                    Reservation.LocationReserved = id;
+                    Reservation.User = User;
+                    Reservation.Phone = Phone;
+
+                    db.ReservationsModels.Add(Reservation);
+                    db.SaveChanges();
+
+                    return View("Index");
+                }
+
+                ViewBag.Message = "Invalid Form";
+                return View();
+            }
         }
     }
 }

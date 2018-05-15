@@ -232,6 +232,14 @@
     <Compile Include="Migrations\201805090052255_AddUrl4.Designer.cs">
       <DependentUpon>201805090052255_AddUrl4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805150937569_AddUrl5.cs" />
+    <Compile Include="Migrations\201805150937569_AddUrl5.Designer.cs">
+      <DependentUpon>201805150937569_AddUrl5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805150950529_AddUrl6.cs" />
+    <Compile Include="Migrations\201805150950529_AddUrl6.Designer.cs">
+      <DependentUpon>201805150950529_AddUrl6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EventGuestsModels.cs" />
@@ -321,6 +329,7 @@
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\AddMembers\Register.cshtml" />
+    <Content Include="Views\Home\Reserve.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -356,6 +365,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805090052255_AddUrl4.resx">
       <DependentUpon>201805090052255_AddUrl4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805150937569_AddUrl5.resx">
+      <DependentUpon>201805150937569_AddUrl5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805150950529_AddUrl6.resx">
+      <DependentUpon>201805150950529_AddUrl6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
