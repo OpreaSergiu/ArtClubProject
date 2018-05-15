@@ -33,5 +33,8 @@ namespace ArtClub.Models
         public DbSet<ReservationsModels> ReservationsModels { get; set; }
         public DbSet<EventsModels> EventsModels { get; set; }
         public DbSet<EventGuestsModels> EventGuestsModels { get; set; }
+        public DbSet<CostsModels> CostsModels { get; set; }
+        public DbSet<PaymentsModels> PaymentsModels { get; set; }
+        public DbSet<ApprovedReservationsModels> ApprovedReservationsModels { get; set; }
     }
 }

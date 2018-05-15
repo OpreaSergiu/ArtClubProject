@@ -16,5 +16,6 @@ namespace ArtClub.Models
         public int LocationReserved { get; set; }
         public string User { get; set; }
         public string Phone { get; set; }
+        public bool approved { get; set; }
     }
 }

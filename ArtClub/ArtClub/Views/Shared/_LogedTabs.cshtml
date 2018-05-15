@@ -1,12 +1,14 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Context.User.IsInRole("Admin"))
 {
+    <li>@Html.ActionLink("Reservations", "Index", "Reservations")</li>
+    <li>@Html.ActionLink("Payments", "Index", "Payments")</li>
+    <li>@Html.ActionLink("Locations", "Index", "Locations")</li>
     <li>@Html.ActionLink("Add Member", "Register", "AddMembers")</li>
 }
 
 @if (Request.IsAuthenticated)
 {
     <li>@Html.ActionLink("Events", "Index", "Events")</li>
-    <li>@Html.ActionLink("Locations", "Index", "Locations")</li>
 }
 

@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -62,7 +63,8 @@ namespace ArtClub.Controllers
                     db.ReservationsModels.Add(Reservation);
                     db.SaveChanges();
 
-                    return View("Index");
+                    string redirectUrl = "/Home/Index/";
+                    return Redirect(redirectUrl);
                 }
 
                 ViewBag.Message = "Invalid Form";
