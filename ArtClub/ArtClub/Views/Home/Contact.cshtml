@@ -19,22 +19,26 @@
 
         <h3>Create Account</h3>
         <p>In order to create an account email us for membership on the above address or complete the below form. You will be contacted by our staff in no time and we will give you the credentials to log-in in to your account.</p>
-        <hr/>
-        <form action="/">
-            </select>
-            <label for="status">Main domain of intrest:</label>
-            <select class="form-control" id="status">
-                <option>Music</option>
-                <option>Photografy</option>
-                <option>Theater</option>
-                <option>Paintring</option>
-                <option>Cinema</option>
-            </select>
+        <hr />
+        <form class="form" method="post">
+            <div class="form-group">
+                </select>
+                <label for="intrest">Main domain of intrest:</label>
+                <select class="form-control" id="intrest" name="intrest">
+                    <option>Music</option>
+                    <option>Photografy</option>
+                    <option>Theater</option>
+                    <option>Paintring</option>
+                    <option>Cinema</option>
+                </select>
+            </div>
             </br>
             <div class="form-group">
                 <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
             </div>
             <button type="submit" class="btn btn-default">Sent</button>
         </form>
-</div>
+
+        @ViewBag.Message
+    </div>
 </div>

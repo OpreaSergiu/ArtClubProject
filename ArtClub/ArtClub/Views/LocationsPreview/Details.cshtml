@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h3>@ViewBag.Name</h3>
+    @if (@ViewBag.Month == null)
+    {
+        <h4>Select Month</h4>
+
+        <form class="form" method="post">
+            <input type="month" id="month" name="month" runat="server" />
+            <button type="submit" class="btn">Check Availability</button>
+        </form>
+
+    }
+    else
+    {
+        <h4>Availability for @ViewBag.Month</h4>
+    }
+    @if (@ViewBag.Table != null)
+    {
+        <hr />
+
+        @Html.Raw(@ViewBag.Table)
+    }
+
+
+</div>

@@ -545,6 +545,7 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\LocationsPreviewController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Controllers\ReservationsController.cs" />
@@ -599,6 +600,14 @@
     <Compile Include="Migrations\201805151654180_AddUrl10.Designer.cs">
       <DependentUpon>201805151654180_AddUrl10.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805161550420_AddUrl11.cs" />
+    <Compile Include="Migrations\201805161550420_AddUrl11.Designer.cs">
+      <DependentUpon>201805161550420_AddUrl11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805161642307_AddUrl12.cs" />
+    <Compile Include="Migrations\201805161642307_AddUrl12.Designer.cs">
+      <DependentUpon>201805161642307_AddUrl12.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApprovedReservationsModels.cs" />
@@ -610,10 +619,13 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PaymentsModels.cs" />
     <Compile Include="Models\ReservationsModels.cs" />
+    <Compile Include="Models\UserRequestsModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CalendarRenderingScrips\NonUsersCalendar.py" />
+    <Content Include="CalendarRenderingScrips\UsersCalendar.py" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -699,6 +711,11 @@
     <Content Include="Views\Payments\Index.cshtml" />
     <Content Include="Views\Reservations\Index.cshtml" />
     <Content Include="Views\Reservations\Delete.cshtml" />
+    <Content Include="Views\LocationsPreview\Details.cshtml" />
+    <Content Include="Views\LocationsPreview\Index.cshtml" />
+    <Content Include="Views\AddMembers\Index.cshtml" />
+    <Content Include="Views\AddMembers\ViewRequests.cshtml" />
+    <Content Include="Views\AddMembers\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -752,6 +769,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805151654180_AddUrl10.resx">
       <DependentUpon>201805151654180_AddUrl10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805161550420_AddUrl11.resx">
+      <DependentUpon>201805161550420_AddUrl11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805161642307_AddUrl12.resx">
+      <DependentUpon>201805161642307_AddUrl12.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

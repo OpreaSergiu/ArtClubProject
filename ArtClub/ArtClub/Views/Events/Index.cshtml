@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<ArtClub.Models.EventsModels>
+@using Microsoft.AspNet.Identity;
 
     <h2>Events</h2>
 
@@ -19,7 +20,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.LocationId)
             </th>
-            <th></th>
+            <th>
+                Actions
+            </th>
         </tr>
     
     @foreach (var item in Model) {
@@ -37,9 +40,16 @@
                 @Html.DisplayFor(modelItem => item.LocationId)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) 
+  
+                @if ((User.Identity.GetUserName() == item.CreationUser) | (Context.User.IsInRole("Admin")))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                } 
+                @if ((User.Identity.GetUserName() == item.CreationUser) | (Context.User.IsInRole("Admin")))
+                {
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
             </td>
         </tr>
     }

@@ -9,12 +9,12 @@
         <li>@Html.ActionLink("Reservations", "Index", "Reservations")</li>
         <li>@Html.ActionLink("Payments", "Index", "Payments")</li>
         <li>@Html.ActionLink("Locations", "Index", "Locations")</li>
-        <li>@Html.ActionLink("Add Member", "Register", "AddMembers")</li>
+        <li>@Html.ActionLink("Add Member", "Index", "AddMembers")</li>
         <li>@Html.ActionLink("Reports", "Index", "Reports")</li>
     }
     else
     {
-        <li>@Html.ActionLink("Locations", "Index", "LocationsUser")</li>
+        <li>@Html.ActionLink("Locations", "Index", "LocationsPreview")</li>
     }
 }
 else
