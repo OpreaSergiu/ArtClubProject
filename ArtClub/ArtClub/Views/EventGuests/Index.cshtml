@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ArtClub.Models.EventGuestsModels>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Events where you are ivited.</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EventName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventLocation)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a href="/Events/Details/@Html.DisplayFor(modelItem => item.EventId)">@Html.DisplayFor(modelItem => item.EventName) </a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventLocation)
+        </td>
+    </tr>
+}
+
+</table>

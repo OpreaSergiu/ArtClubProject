@@ -11,7 +11,10 @@ namespace ArtClub.Models
         [Key]
         public int Id { get; set; }
         public int EventId { get; set; }
-        public string GuestName { get; set; }
+        public string EventName { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime EventDate { get; set; }
+        public string EventLocation { get; set; }
         public string GuestEmail { get; set; }
     }
 }

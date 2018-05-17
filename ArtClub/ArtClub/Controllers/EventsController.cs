@@ -40,26 +40,6 @@ namespace ArtClub.Controllers
             return View(eventsModels);
         }
 
-        private string run_cmd(string cmd, int args1, string args2)
-        {
-            ProcessStartInfo start = new ProcessStartInfo();
-            start.FileName = @"C:\Users\Sergiu\AppData\Local\Programs\Python\Python36-32\python.exe";
-            start.CreateNoWindow = true;
-            start.Arguments = string.Format("{0} {1} {2}", cmd, args1, args2);
-            start.UseShellExecute = false;
-            start.RedirectStandardOutput = true;
-            using (Process process = Process.Start(start))
-            {
-                using (StreamReader reader = process.StandardOutput)
-                {
-                    string result = reader.ReadToEnd();
-                    //Console.Write(result);
-                    process.WaitForExit();
-                    return result;
-                }
-            }
-        }
-
         public ActionResult ChoseLocation(int? id)
         {
             if (id == null)
@@ -74,9 +54,108 @@ namespace ArtClub.Controllers
 
             string SQL_querry = "SELECT * FROM LocationsModels EXCEPT (SELECT LocationsModels.Id, LocationsModels.Name, LocationsModels.City, LocationsModels.State, LocationsModels.Street, LocationsModels.Number, LocationsModels.AddressDetails, LocationsModels.Description, LocationsModels.Capacity FROM LocationsModels INNER JOIN ApprovedReservationsModels ON ApprovedReservationsModels.LocationReserved = LocationsModels.Id AND ApprovedReservationsModels.Date = @p0)";
 
-            var LocationsToChose = (db.Database.SqlQuery<LocationsModels>(SQL_querry, eventsModels.EventDate));
+
+            var model = new EventLocationsViewModels()
+            {
+                Event = eventsModels,
+
+                Locations = (db.Database.SqlQuery<LocationsModels>(SQL_querry, eventsModels.EventDate))
+            };
+
+            return View(model);
+        }
+
+        public ActionResult Invite(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            EventsModels eventsModels = db.EventsModels.Find(id);
+            if (eventsModels == null)
+            {
+                return HttpNotFound();
+            }
 
             return View(eventsModels);
+        }
+
+        [HttpPost]
+        public ActionResult Invite(int id, string email)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            EventsModels eventsModels = db.EventsModels.Find(id);
+            if (eventsModels == null)
+            {
+                return HttpNotFound();
+            }
+
+            var newInvite = new EventGuestsModels();
+
+            newInvite.EventId = id;
+            newInvite.GuestEmail = email;
+            newInvite.EventName = eventsModels.Name;
+            newInvite.EventDate = eventsModels.EventDate;
+            newInvite.EventLocation = db.LocationsModels.Find(eventsModels.LocationId).Name;
+
+            db.EventGuestsModels.Add(newInvite);
+            db.SaveChanges();
+
+            return View(eventsModels);
+        }
+
+        public ActionResult BookLocationForEvent(int id, int locationId)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (locationId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            EventsModels eventsModels = db.EventsModels.Find(id);
+            if (eventsModels == null)
+            {
+                return HttpNotFound();
+            }
+
+            eventsModels.LocationId = locationId;
+            eventsModels.LocationName = db.LocationsModels.Find(locationId).Name;
+
+            db.SaveChanges();
+
+            var newApprovedReservation = new ApprovedReservationsModels();
+
+            newApprovedReservation.User = eventsModels.CreationUser;
+            newApprovedReservation.Date = eventsModels.EventDate;
+            newApprovedReservation.Reason = eventsModels.Name;
+            newApprovedReservation.Phone = " ";
+            newApprovedReservation.LocationReserved = eventsModels.LocationId;
+
+            db.ApprovedReservationsModels.Add(newApprovedReservation);
+            db.SaveChanges();
+
+            var newCostsModels = new CostsModels();
+
+            newCostsModels.User = eventsModels.CreationUser;
+            newCostsModels.Date = DateTime.Now;
+            newCostsModels.Amount = 200;
+            newCostsModels.Month = eventsModels.EventDate;
+            newCostsModels.EventId = eventsModels.Id;
+            newCostsModels.EventName = eventsModels.Name;
+
+            db.CostsModels.Add(newCostsModels);
+            db.SaveChanges();
+
+            string redirectUrl = "/Events";
+
+            return Redirect(redirectUrl);
         }
 
         // GET: Events/Create
@@ -104,44 +183,6 @@ namespace ArtClub.Controllers
                 return Redirect(redirectUrl);
             }
 
-            return View(eventsModels);
-        }
-
-        // GET: Events/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            string user_name = User.Identity.GetUserName();
-
-            EventsModels eventsModels = db.EventsModels.Find(id);
-            if (eventsModels == null)
-            {
-                return HttpNotFound();
-            }
-            if(eventsModels.CreationUser == user_name)
-            {
-                return View(eventsModels);
-            }
-            return HttpNotFound();
-        }
-
-        // POST: Events/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,EventDate,LocationId")] EventsModels eventsModels)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(eventsModels).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
             return View(eventsModels);
         }
 

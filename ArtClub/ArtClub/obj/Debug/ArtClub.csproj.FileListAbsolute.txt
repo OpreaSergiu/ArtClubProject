@@ -353,3 +353,7 @@ C:\Users\Sergiu\source\repos\ArtClubProject\ArtClub\ArtClub\obj\Debug\ArtClub.Mi
 C:\Users\Sergiu\source\repos\ArtClubProject\ArtClub\ArtClub\obj\Debug\ArtClub.Migrations.AddUrl10.resources
 C:\Users\Sergiu\source\repos\ArtClubProject\ArtClub\ArtClub\obj\Debug\ArtClub.Migrations.AddUrl11.resources
 C:\Users\Sergiu\source\repos\ArtClubProject\ArtClub\ArtClub\obj\Debug\ArtClub.Migrations.AddUrl12.resources
+C:\Users\Sergiu\source\repos\ArtClubProject\ArtClub\ArtClub\obj\Debug\ArtClub.Migrations.AddUrl13.resources
+C:\Users\Sergiu\source\repos\ArtClubProject\ArtClub\ArtClub\obj\Debug\ArtClub.Migrations.AddUrl14.resources
+C:\Users\Sergiu\source\repos\ArtClubProject\ArtClub\ArtClub\obj\Debug\ArtClub.Migrations.AddUrl15.resources
+C:\Users\Sergiu\source\repos\ArtClubProject\ArtClub\ArtClub\obj\Debug\ArtClub.Migrations.AddUrl16.resources

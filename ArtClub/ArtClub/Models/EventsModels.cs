@@ -18,5 +18,6 @@ namespace ArtClub.Models
         public DateTime EventDate { get; set; }
         public string CreationUser { get; set; }
         public int LocationId { get; set; }
+        public string LocationName { get; set; }
     }
 }

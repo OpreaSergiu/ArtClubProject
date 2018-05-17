@@ -1,0 +1,55 @@
+﻿@model ArtClub.Models.EventsModels
+@{
+    ViewBag.Title = "Invite";
+}
+
+<div>
+    <div class="row">
+        <div class="col-md-3">
+            <hr />
+            <h4  align ="center">Invite Members to this Event:</h4>
+            <dl align="center">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EventDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.EventDate)
+                </dd>
+            </dl>
+
+            <hr />
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-4">
+            <hr />
+            <br />
+            <form class="form" method="post" align="center">
+                <label for="email">Member Email:</label>
+                <br />
+                <input type="email" id="email" name="email" runat="server" />
+                <br />
+                <br />
+                <button type="submit" class="btn">Send invite!</button>
+            </form>
+            <hr />
+        </div>
+    </div>
+</div>
