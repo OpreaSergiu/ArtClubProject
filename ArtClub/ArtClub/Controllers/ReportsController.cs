@@ -58,5 +58,24 @@ namespace ArtClub.Controllers
             string fileName = "Income_Rerpot.xlsx";
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
+
+        [HttpPost]
+        public FileResult GenerateMembersPaymentsRerport(string month)
+        {
+            var filePath = Server.MapPath("~/ReportingFolder/") + "\\Members_Payments_Rerpot.xlsx";
+
+            if (System.IO.File.Exists(filePath))
+            {
+                System.IO.File.Delete(filePath);
+            }
+
+            string fullScriptPath = Server.MapPath("~/ReportingScripts/") + "\\memberspayments.py";
+
+            var textResult = run_cmd(fullScriptPath, month);
+
+            byte[] fileBytes = System.IO.File.ReadAllBytes(@filePath);
+            string fileName = "Members_Payments_Rerpot.xlsx";
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace ArtClub.Models
     {
         [Key]
         public int Id { get; set; }
-        public string User { get; set; }
+        public string UserName { get; set; }
         public int EventId { get; set; }
         public string EventName { get; set; }
         public float Amount { get; set; }

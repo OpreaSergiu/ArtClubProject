@@ -48,7 +48,7 @@ namespace ArtClub.Controllers
 
                 var newCostsModels = new CostsModels();
 
-                newCostsModels.User = reservationsModels.User;
+                newCostsModels.UserName = reservationsModels.User;
                 newCostsModels.Date = reservationsModels.Date;
                 newCostsModels.Amount = 200;
                 newCostsModels.Month = reservationsModels.Date;
@@ -60,7 +60,7 @@ namespace ArtClub.Controllers
 
                 var newPaymentsModelss = new PaymentsModels();
 
-                newPaymentsModelss.User = reservationsModels.User;
+                newPaymentsModelss.UserName = reservationsModels.User;
                 newPaymentsModelss.Date = DateTime.Now;
                 newPaymentsModelss.Amount = 400;
                 newPaymentsModelss.Month = DateTime.Now;

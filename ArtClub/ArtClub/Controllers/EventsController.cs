@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -143,7 +144,7 @@ namespace ArtClub.Controllers
 
             var newCostsModels = new CostsModels();
 
-            newCostsModels.User = eventsModels.CreationUser;
+            newCostsModels.UserName = eventsModels.CreationUser;
             newCostsModels.Date = DateTime.Now;
             newCostsModels.Amount = 200;
             newCostsModels.Month = eventsModels.EventDate;
@@ -171,6 +172,30 @@ namespace ArtClub.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,Description,EventDate")] EventsModels eventsModels)
         {
+            SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=aspnet-ArtClub-20180506023021;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+
+            conn.Open();
+
+            SqlCommand com1 = new SqlCommand("SELECT SUM(Amount) FROM PaymentsModels WHERE FORMAT(Month,'yyyy-MM') = @p0", conn);
+            SqlCommand com2 = new SqlCommand("SELECT SUM(Amount) FROM CostsModels WHERE FORMAT(Month,'yyyy-MM') = @p0", conn);
+
+            com1.Parameters.AddWithValue("@p0", eventsModels.EventDate.ToString("yyyy-MM"));
+
+            string totalPayments = com1.ExecuteScalar().ToString();
+
+            com2.Parameters.AddWithValue("@p0", eventsModels.EventDate.ToString("yyyy-MM"));
+
+            string totalCosts = com2.ExecuteScalar().ToString();
+
+            float totalPaymentsForMonth = float.Parse(totalPayments);
+            float totalCostsForMonth = float.Parse(totalCosts);
+
+            if (totalPaymentsForMonth < totalCostsForMonth)
+            {
+                ViewBag.message = "You cannot reserve anymore. The club budget it's over for this month.";
+                return View(eventsModels);
+            }
+
             if (ModelState.IsValid)
             {
                 eventsModels.CreationUser = User.Identity.GetUserName();

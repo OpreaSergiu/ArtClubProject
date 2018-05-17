@@ -10,7 +10,7 @@ namespace ArtClub.Models
     {
         [Key]
         public int Id { get; set; }
-        public string User { get; set; }
+        public string UserName { get; set; }
         public float Amount { get; set; }
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime Date { get; set; }

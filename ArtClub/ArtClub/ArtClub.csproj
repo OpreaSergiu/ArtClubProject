@@ -626,6 +626,14 @@
     <Compile Include="Migrations\201805170115432_AddUrl16.Designer.cs">
       <DependentUpon>201805170115432_AddUrl16.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805170726054_AddUrl17.cs" />
+    <Compile Include="Migrations\201805170726054_AddUrl17.Designer.cs">
+      <DependentUpon>201805170726054_AddUrl17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805170734222_AddUrl18.cs" />
+    <Compile Include="Migrations\201805170734222_AddUrl18.Designer.cs">
+      <DependentUpon>201805170734222_AddUrl18.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApprovedReservationsModels.cs" />
@@ -812,6 +820,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805170115432_AddUrl16.resx">
       <DependentUpon>201805170115432_AddUrl16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805170726054_AddUrl17.resx">
+      <DependentUpon>201805170726054_AddUrl17.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805170734222_AddUrl18.resx">
+      <DependentUpon>201805170734222_AddUrl18.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
